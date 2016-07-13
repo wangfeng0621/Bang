@@ -1,4 +1,4 @@
-package test;
+package test.java;
 
 import main.java.GamerProperties;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package test;
+package test.java;
 
 import main.java.GamerState;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package test;
+package test.java;
 
 import main.java.Bang;
 import org.junit.Test;
