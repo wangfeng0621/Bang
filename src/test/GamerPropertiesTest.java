@@ -22,4 +22,23 @@ public class GamerPropertiesTest {
         assertThat(player.State.toString(), is("Alive"));
     }
 
+
+    @Test
+    //玩家具有发言功能，但是每次发言的长度不应该超过100
+    public void should_return_true_when_player_say_hello(){
+        GamerProperties player = new GamerProperties("wang",1,"Killer");
+
+        assertThat(player.PlayerSpeak("hello!"), is(true));
+    }
+
+    @Test
+    //玩家发言超过100的时候
+    public void should_false_when_Players_spoke_length_of_more_than_100(){
+        GamerProperties player = new GamerProperties("wang",1,"Killer");
+
+        assertThat(player.PlayerSpeak("Players spoke length of more than 100Players spoke length of more than 100Players spoke length of more than 100" +
+                "Players spoke length of more than 100Players spoke length of more than 100Players spoke length of more than 100Players spoke length of more than 100" +
+                "Players spoke length of more than 100Players spoke length of more than 100Players spoke length of more than 100Players spoke length of more than 100"
+        ), is(false));
+    }
 }

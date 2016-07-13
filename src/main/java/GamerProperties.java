@@ -20,4 +20,15 @@ public class GamerProperties {
             role = Role.role.Police;
         State = GamerState.state.Alive;
     }
+
+    public boolean PlayerSpeak(String str) {
+        if(str.length() <= 100 ){
+            System.out.println(Name+"("+"Player"+ID+"):"+str);
+            return true;
+        }
+        else{
+            System.out.println(Name+"("+"Player"+ID+"):"+"玩家太啰嗦，已屏蔽他的发言！");
+            return false;
+        }
+    }
 }
