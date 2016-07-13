@@ -27,7 +27,7 @@ public class GamerProperties {
             return true;
         }
         else{
-            System.out.println(Name+"("+"Player"+ID+"):"+"玩家太啰嗦，已屏蔽他的发言！");
+            System.out.println(Name+"("+"Player"+ID+"):"+"This player too wordy, has been shielded his speech!");
             return false;
         }
     }
