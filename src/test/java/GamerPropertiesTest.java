@@ -3,6 +3,8 @@ package test.java;
 import main.java.GamerProperties;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -41,4 +43,50 @@ public class GamerPropertiesTest {
                 "Players spoke length of more than 100Players spoke length of more than 100Players spoke length of more than 100Players spoke length of more than 100"
         ), is(false));
     }
+
+    @Test
+    //所有玩家都具有投票的功能
+    public void should_turn_Player_id_when_vote_another_player(){
+        GamerProperties player = new GamerProperties("wang",1,"Killer");
+        ArrayList<Integer> Alive = new ArrayList<>();
+        for(int i = 0;i < 11;i++)
+            Alive.add(i);
+
+        assertThat(player.vote(Alive,3), is(3));
+    }
+
+    @Test
+    //玩家能够弃权
+    public void should_turn_false_when_vote_nobody(){
+        GamerProperties player = new GamerProperties("wang",1,"Killer");
+        ArrayList<Integer> Alive = new ArrayList<>();
+        for(int i = 0;i < 11;i++)
+            Alive.add(i);
+
+        assertThat(player.vote(Alive,-1), is(-1));
+    }
+
+    @Test
+    //玩家不能投自己的票
+    public void should_turn_false_when_vote_himself(){
+        GamerProperties player = new GamerProperties("wang",1,"Killer");
+        ArrayList<Integer> Alive = new ArrayList<>();
+        for(int i = 0;i < 11;i++)
+            Alive.add(i);
+
+        assertThat(player.vote(Alive,1), is(-2));
+    }
+
+    @Test
+    //玩家不能投已经死亡了的人的票,否则返回-1
+    public void should_turn_false_when_vote_a_player_who_is_death(){
+        GamerProperties player = new GamerProperties("wang",1,"Killer");
+        ArrayList<Integer> Alive = new ArrayList<>();
+        for(int i = 0;i < 11;i++)
+            Alive.add(i);
+
+        assertThat(player.vote(Alive,11), is(-3));
+    }
+
+
 }

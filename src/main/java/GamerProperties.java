@@ -1,5 +1,7 @@
 package main.java;
 
+import java.util.ArrayList;
+
 /**
  * Created by feng on 2016/7/13.
  */
@@ -30,5 +32,16 @@ public class GamerProperties {
             System.out.println(Name+"("+"Player"+ID+"):"+"This player too wordy, has been shielded his speech!");
             return false;
         }
+    }
+
+
+    public int vote(ArrayList<Integer> Alive, int votee) {
+        if(votee == -1) return -1;
+        if(votee == ID) return -2;
+        int len = Alive.size();
+        for(int i = 0;i < len;i++)
+            if(votee == Alive.get(i))
+                return votee;
+        return -3;
     }
 }
