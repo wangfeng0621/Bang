@@ -44,4 +44,5 @@ public class GamerProperties {
                 return votee;
         return -3;
     }
+
 }

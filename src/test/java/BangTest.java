@@ -64,4 +64,53 @@ public class BangTest {
         assertThat(bang.Alive.size(), is(12));
     }
 
+    @Test
+    public void should_kill_Player5_when_all_killer_want_kill_player5(){
+        String str = "wang zhang yang li zhou zhao yao he gao mo mu lan liu";
+        String st[] = str.split(" ");
+        String role[]  = {"Killer","Killer","Killer","Civilian","Civilian","Civilian","Civilian","Civilian","Civilian","Police","Police","Police"};
+        Bang bang = new Bang(12,st);
+        int killed[] = {5,5,5};
+
+        bang.killed(killed);
+
+        assertThat(bang.Player[5].State.toString(), is("Death"));
+        assertThat(bang.Civilians, is(5));
+        assertThat(bang.PlayerNumbers, is(11));
+        assertThat(bang.Alive.size(), is(11));
+    }
+
+    @Test
+    public void should_return_false_when_As_votes_for_two_or_more_players(){
+        String str = "wang zhang yang li zhou zhao yao he gao mo mu lan liu";
+        String st[] = str.split(" ");
+        String role[]  = {"Killer","Killer","Killer","Civilian","Civilian","Civilian","Civilian","Civilian","Civilian","Police","Police","Police"};
+        Bang bang = new Bang(12,st);
+        int killed[] = {5,4,3};
+
+        bang.killed(killed);
+
+        assertThat(bang.Player[5].State.toString(), is("Alive"));
+        assertThat(bang.Civilians, is(6));
+        assertThat(bang.PlayerNumbers, is(12));
+        assertThat(bang.Alive.size(), is(12));
+    }
+
+    @Test
+    public void should_return_false_when_the_votee_is_themselves(){
+        String str = "wang zhang yang li zhou zhao yao he gao mo mu lan liu";
+        String st[] = str.split(" ");
+        String role[]  = {"Killer","Killer","Killer","Civilian","Civilian","Civilian","Civilian","Civilian","Civilian","Police","Police","Police"};
+        Bang bang = new Bang(12,st);
+        int killed[] = {1,0,1};
+
+        bang.killed(killed);
+
+        assertThat(bang.Player[5].State.toString(), is("Alive"));
+        assertThat(bang.Civilians, is(6));
+        assertThat(bang.PlayerNumbers, is(12));
+        assertThat(bang.Alive.size(), is(12));
+
+    }
+
 }

@@ -88,5 +88,16 @@ public class GamerPropertiesTest {
         assertThat(player.vote(Alive,11), is(-3));
     }
 
+    @Test
+    //杀手玩家具有杀人的功能,实际上杀手杀人也是投票的一种，可以复用投票的方法
+    public void should_turn_player_id_when_Killer_want_kill_another_player(){
+        GamerProperties player = new GamerProperties("wang",1,"Killer");
+        ArrayList<Integer> Alive = new ArrayList<>();
+        for(int i = 0;i < 11;i++)
+            Alive.add(i);
+
+        assertThat(player.vote(Alive,2), is(2));
+    }
+
 
 }

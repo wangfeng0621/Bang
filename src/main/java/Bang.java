@@ -41,7 +41,11 @@ public class Bang {
             return;
         }
 
+        OutPlayer(outPlayer);
 
+    }
+
+    private void OutPlayer(int outPlayer) {
         Player[outPlayer].State = GamerState.state.Death;
         PlayerNumbers--;
         if(Player[outPlayer].role == Role.role.Killer)
@@ -51,7 +55,6 @@ public class Bang {
         else
             Civilians--;
         Alive.remove(outPlayer);
-
     }
 
     private int max(int[] votee) {
@@ -70,4 +73,26 @@ public class Bang {
         return count == 1 ? outPlayerID:-1;
     }
 
+    public void killed(int[] killed) {
+        int votee[] = new int[Player.length];
+        int index = 0;
+        for(int i = 0; i < PlayerNumbers;i++){
+            int id = Alive.get(i);
+            if(Player[id].role == Role.role.Killer)
+                votee[Player[id].vote(Alive,killed[i])]++;
+        }
+
+        int outPlayer = max(votee);
+        if(outPlayer == -1){
+            System.out.println("The highest votes more than two or more players, please vote again!");
+            return;
+        }
+
+        if(Player[outPlayer].role == Role.role.Killer){
+            System.out.println("Killer can't kill one of their own!");
+            return;
+        }
+
+        OutPlayer(outPlayer);
+    }
 }
