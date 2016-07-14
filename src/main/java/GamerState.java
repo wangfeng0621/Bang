@@ -6,5 +6,5 @@ package main.java;
 public class GamerState {
     public enum  state{
         Alive, Death;
-    };
+    }
 }

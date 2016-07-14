@@ -67,7 +67,7 @@ public class GamerPropertiesTest {
     }
 
     @Test
-    //玩家不能投自己的票
+    //玩家不能投自己的票,否则返回-2
     public void should_turn_false_when_vote_himself(){
         GamerProperties player = new GamerProperties("wang",1,"Killer");
         ArrayList<Integer> Alive = new ArrayList<>();
@@ -78,7 +78,7 @@ public class GamerPropertiesTest {
     }
 
     @Test
-    //玩家不能投已经死亡了的人的票,否则返回-1
+    //玩家不能投已经死亡了的人的票,否则返回-3
     public void should_turn_false_when_vote_a_player_who_is_death(){
         GamerProperties player = new GamerProperties("wang",1,"Killer");
         ArrayList<Integer> Alive = new ArrayList<>();

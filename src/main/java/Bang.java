@@ -12,6 +12,7 @@ public class Bang {
     public int Polices;
     public int Civilians;
     public ArrayList<Integer> Alive;
+    public GameStatus.status gameStatus;
 
     public Bang(int Number, String[] str) {
         PlayerNumbers = Number;
@@ -25,6 +26,7 @@ public class Bang {
             Player[i] = new GamerProperties(str[i],i,role[i]) ;
             Alive.add(i);
         }
+        gameStatus = GameStatus.status.GameContinue;
     }
 
 
@@ -54,7 +56,7 @@ public class Bang {
             Polices--;
         else
             Civilians--;
-        Alive.remove(outPlayer);
+        Alive.remove((Integer) outPlayer);
     }
 
     private int max(int[] votee) {
@@ -76,10 +78,13 @@ public class Bang {
     public void killed(int[] killed) {
         int votee[] = new int[Player.length];
         int index = 0;
-        for(int i = 0; i < PlayerNumbers;i++){
+        for(int i = 0; i < PlayerNumbers && index < killed.length;i++){
             int id = Alive.get(i);
-            if(Player[id].role == Role.role.Killer)
-                votee[Player[id].vote(Alive,killed[i])]++;
+            if(Player[id].role == Role.role.Killer){
+                votee[Player[id].vote(Alive,killed[index])]++;
+                index++;
+            }
+
         }
 
         int outPlayer = max(votee);
@@ -94,5 +99,21 @@ public class Bang {
         }
 
         OutPlayer(outPlayer);
+    }
+
+
+    public boolean checkGameStatus() {
+        if(Killers == 0){
+            gameStatus = GameStatus.status.KillerLose;
+            return false;
+        }
+
+        else if(Polices == 0 || Civilians == 0){
+            gameStatus = GameStatus.status.KillerWin;
+            return false;
+        }
+        else
+            gameStatus = GameStatus.status.GameContinue;
+        return true;
     }
 }

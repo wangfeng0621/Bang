@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.java.BangTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2016-07-14T09:33:11" hostname="feng" time="0.007">
+<testsuite name="test.java.BangTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2016-07-14T14:32:01" hostname="feng" time="0.009">
   <properties/>
   <testcase name="should_vote_oncemore_when_As_votes_for_two_or_more_players" classname="test.java.BangTest" time="0.006"/>
+  <testcase name="should_return_false_when_As_votes_for_two_or_more_players" classname="test.java.BangTest" time="0.001"/>
   <testcase name="should_show_Player_name_when_Player_is_12" classname="test.java.BangTest" time="0.0"/>
+  <testcase name="should_kill_Player5_when_all_killer_want_kill_player5" classname="test.java.BangTest" time="0.0"/>
+  <testcase name="should_return_false_when_the_votee_is_themselves" classname="test.java.BangTest" time="0.001"/>
   <testcase name="should_state_is_Death_when_most_of_player_vote_for_him" classname="test.java.BangTest" time="0.0"/>
   <system-out><![CDATA[The highest votes more than two or more players, please vote again!
+The highest votes more than two or more players, please vote again!
+Killer can't kill one of their own!
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

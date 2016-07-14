@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.java.GamerPropertiesTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-07-14T09:33:11" hostname="feng" time="0.003">
+<testsuite name="test.java.GamerPropertiesTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2016-07-14T14:32:01" hostname="feng" time="0.004">
   <properties/>
-  <testcase name="should_properties_when_input_a_man" classname="test.java.GamerPropertiesTest" time="0.0"/>
-  <testcase name="should_return_true_when_player_say_hello" classname="test.java.GamerPropertiesTest" time="0.001"/>
+  <testcase name="should_properties_when_input_a_man" classname="test.java.GamerPropertiesTest" time="0.001"/>
+  <testcase name="should_return_true_when_player_say_hello" classname="test.java.GamerPropertiesTest" time="0.0"/>
   <testcase name="should_turn_false_when_vote_himself" classname="test.java.GamerPropertiesTest" time="0.001"/>
   <testcase name="should_false_when_Players_spoke_length_of_more_than_100" classname="test.java.GamerPropertiesTest" time="0.0"/>
   <testcase name="should_turn_Player_id_when_vote_another_player" classname="test.java.GamerPropertiesTest" time="0.0"/>
   <testcase name="should_turn_false_when_vote_a_player_who_is_death" classname="test.java.GamerPropertiesTest" time="0.0"/>
-  <testcase name="should_turn_false_when_vote_nobody" classname="test.java.GamerPropertiesTest" time="0.0"/>
+  <testcase name="should_turn_player_id_when_Killer_want_kill_another_player" classname="test.java.GamerPropertiesTest" time="0.0"/>
+  <testcase name="should_turn_false_when_vote_nobody" classname="test.java.GamerPropertiesTest" time="0.001"/>
   <system-out><![CDATA[wang(Player1):hello!
 wang(Player1):This player too wordy, has been shielded his speech!
 ]]></system-out>

@@ -113,4 +113,50 @@ public class BangTest {
 
     }
 
+    @Test
+    public void should_return_true_when_all_the_killers_were_find_out(){
+        String str = "wang zhang yang li zhou zhao yao he gao mo mu lan liu";
+        String st[] = str.split(" ");
+        String role[]  = {"Killer","Killer","Killer","Civilian","Civilian","Civilian","Civilian","Civilian","Civilian","Police","Police","Police"};
+        Bang bang = new Bang(12,st);
+
+        //第一轮游戏，杀掉玩家5，投票投掉玩家0
+        int killed1[] = {5,5,5};
+        bang.killed(killed1);
+        int vote1[] = {6,6,6,0,0,0,0,0,0,0,0};
+        bang.OutVotee(vote1);
+
+        assertThat(bang.Killers, is(2));
+        assertThat(bang.Player[5].State.toString(), is("Death"));
+        assertThat(bang.Player[0].State.toString(), is("Death"));
+        assertThat(bang.gameStatus.toString(), is("GameContinue"));
+        assertThat(bang.checkGameStatus(), is(true));
+
+        //第一轮游戏，杀掉玩家6，投票投掉玩家1
+        int killed2[] = {6,6};
+        bang.killed(killed2);
+        int vote2[] = {7,7,1,1,1,1,1,1,1};
+        bang.OutVotee(vote2);
+
+        assertThat(bang.Killers, is(1));
+        assertThat(bang.Player[6].State.toString(), is("Death"));
+        assertThat(bang.Player[1].State.toString(), is("Death"));
+        assertThat(bang.Player[2].State.toString(), is("Alive"));
+        assertThat(bang.checkGameStatus(), is(true));
+        assertThat(bang.gameStatus.toString(), is("GameContinue"));
+
+
+        //第一轮游戏，杀掉玩家7，投票投掉玩家2
+        int killed3[] = {7};
+        bang.killed(killed3);
+        int vote3[] = {9,2,2,2,2,2,2};
+        bang.OutVotee(vote3);
+
+        assertThat(bang.Killers, is(0));
+        assertThat(bang.Player[7].State.toString(), is("Death"));
+        assertThat(bang.Player[2].State.toString(), is("Death"));
+        assertThat(bang.checkGameStatus(), is(false));
+        assertThat(bang.gameStatus.toString(), is("KillerLose"));
+    }
+
 }
