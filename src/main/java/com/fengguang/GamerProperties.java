@@ -8,20 +8,20 @@ import java.util.ArrayList;
 public class GamerProperties {
     public String name;
     public int id;
-    public Role.Trole trole;
-    public GamerState.State state;
+    public Role role;
+    public GamerState state;
 
     public GamerProperties(String name, int id, String r) {
         this.name = name;
         this.id = id;
-        if (r.equals(Role.Trole.Civilian.toString())) {
-            trole = Role.Trole.Civilian;
-        } else if (r.equals(Role.Trole.Killer.toString())) {
-            trole = Role.Trole.Killer;
-        } else if (r.equals(Role.Trole.Police.toString())) {
-            trole = Role.Trole.Police;
+        if (r.equals(Role.CIVILIAN.toString())) {
+            role = Role.CIVILIAN;
+        } else if (r.equals(Role.KILLER.toString())) {
+            role = Role.KILLER;
+        } else if (r.equals(Role.POLICE.toString())) {
+            role = Role.POLICE;
         }
-        state = GamerState.State.Alive;
+        state = GamerState.ALIVE;
     }
 
     public boolean playerSpeak(String str) {

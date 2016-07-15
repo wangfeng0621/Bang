@@ -12,7 +12,7 @@ public class Bang {
     public int polices;
     public int civilians;
     public ArrayList<Integer> alive;
-    public GameStatus.Status gameStatus;
+    public GameStatus gameStatus;
 
     public Bang(int number, String[] str) {
         playerNumbers = number;
@@ -21,12 +21,12 @@ public class Bang {
         civilians = number - killers - polices;
         player = new GamerProperties[number];
         alive = new ArrayList<>();
-        String role[] = {"Killer", "Killer", "Killer", "Civilian", "Civilian", "Civilian", "Civilian", "Civilian", "Civilian", "Police", "Police", "Police"};
+        String role[] = {"KILLER", "KILLER", "KILLER", "CIVILIAN", "CIVILIAN", "CIVILIAN", "CIVILIAN", "CIVILIAN", "CIVILIAN", "POLICE", "POLICE", "POLICE"};
         for (int i = 0; i < number; i++) {
             player[i] = new GamerProperties(str[i], i, role[i]);
             alive.add(i);
         }
-        gameStatus = GameStatus.Status.GameContinue;
+        gameStatus = GameStatus.GAME_CONTINUE;
     }
 
 
@@ -48,11 +48,11 @@ public class Bang {
     }
 
     private void outPlayer(int outPlayer) {
-        player[outPlayer].state = GamerState.State.Death;
+        player[outPlayer].state = GamerState.DEATH;
         playerNumbers--;
-        if (player[outPlayer].trole == Role.Trole.Killer) {
+        if (player[outPlayer].role == Role.KILLER) {
             killers--;
-        } else if (player[outPlayer].trole == Role.Trole.Police) {
+        } else if (player[outPlayer].role == Role.POLICE) {
             polices--;
         } else {
             civilians--;
@@ -81,7 +81,7 @@ public class Bang {
         int index = 0;
         for (int i = 0; i < playerNumbers && index < killed.length; i++) {
             int id = alive.get(i);
-            if (player[id].trole == Role.Trole.Killer) {
+            if (player[id].role == Role.KILLER) {
                 votee[player[id].vote(alive, killed[index])]++;
                 index++;
             }
@@ -94,8 +94,8 @@ public class Bang {
             return;
         }
 
-        if (player[outPlayer].trole == Role.Trole.Killer) {
-            System.out.println("Killer can't kill one of their own!");
+        if (player[outPlayer].role == Role.KILLER) {
+            System.out.println("KILLER can't kill one of their own!");
             return;
         }
 
@@ -105,14 +105,14 @@ public class Bang {
 
     public boolean checkGameStatus() {
         if (killers == 0) {
-            gameStatus = GameStatus.Status.KillerLose;
+            gameStatus = GameStatus.KILLER_LOSE;
             return false;
         } else if (polices == 0 || civilians == 0) {
-            gameStatus = GameStatus.Status.KillerWin;
+            gameStatus = GameStatus.KILLER_WIN;
             return false;
         } else {
-            gameStatus = GameStatus.Status.GameContinue;
+            gameStatus = GameStatus.GAME_CONTINUE;
+            return true;
         }
-        return true;
     }
 }
