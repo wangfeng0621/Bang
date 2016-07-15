@@ -1,10 +1,9 @@
-package test.java;
+package com.fengguang;
 
-import main.java.Role;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by feng on 2016/7/13.

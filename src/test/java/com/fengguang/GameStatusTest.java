@@ -1,6 +1,5 @@
-package test.java;
+package com.fengguang;
 
-import main.java.GameStatus;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;

@@ -1,6 +1,5 @@
-package test.java;
+package com.fengguang;
 
-import main.java.GamerProperties;
 import org.junit.Test;
 
 import java.util.ArrayList;
