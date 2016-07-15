@@ -1,3 +1,7 @@
+plugins {
+    id "net.saliman.cobertura" version "2.3.2"
+}
+
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'idea'
@@ -12,4 +16,10 @@ repositories {
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.12'
     testCompile 'junit:junit:4.12'
+}
+
+cobertura {
+    rootProject.subprojects.each {
+        coverageDirs << file("${it.name}/build/classes/main")
+    }
 }
