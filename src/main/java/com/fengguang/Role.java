@@ -5,7 +5,7 @@ package com.fengguang;
  */
 public class Role {
 
-    public enum role{
-        Killer,Civilian,Police;
+    public enum Trole {
+        Killer, Civilian, Police;
     }
 }

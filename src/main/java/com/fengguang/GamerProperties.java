@@ -6,42 +6,48 @@ import java.util.ArrayList;
  * Created by feng on 2016/7/13.
  */
 public class GamerProperties {
-    public String Name;
-    public int ID;
-    public Role.role role;
-    public GamerState.state State;
+    public String name;
+    public int id;
+    public Role.Trole trole;
+    public GamerState.State state;
 
     public GamerProperties(String name, int id, String r) {
-        Name = name;
-        ID = id;
-        if(r.equals(Role.role.Civilian.toString()) )
-            role = Role.role.Civilian;
-        else if(r.equals(Role.role.Killer.toString()))
-            role = Role.role.Killer;
-        else if(r.equals(Role.role.Police.toString()))
-            role = Role.role.Police;
-        State = GamerState.state.Alive;
+        this.name = name;
+        this.id = id;
+        if (r.equals(Role.Trole.Civilian.toString())) {
+            trole = Role.Trole.Civilian;
+        } else if (r.equals(Role.Trole.Killer.toString())) {
+            trole = Role.Trole.Killer;
+        } else if (r.equals(Role.Trole.Police.toString())) {
+            trole = Role.Trole.Police;
+        }
+        state = GamerState.State.Alive;
     }
 
-    public boolean PlayerSpeak(String str) {
-        if(str.length() <= 100 ){
-            System.out.println(Name+"("+"Player"+ID+"):"+str);
+    public boolean playerSpeak(String str) {
+        if (str.length() <= 100) {
+            System.out.println(name + "(" + "player" + id + "):" + str);
             return true;
-        }
-        else{
-            System.out.println(Name+"("+"Player"+ID+"):"+"This player too wordy, has been shielded his speech!");
+        } else {
+            System.out.println(name + "(" + "player" + id + "):" + "This player too wordy, has been shielded his speech!");
             return false;
         }
     }
 
 
-    public int vote(ArrayList<Integer> Alive, int votee) {
-        if(votee == -1) return -1;
-        if(votee == ID) return -2;
-        int len = Alive.size();
-        for(int i = 0;i < len;i++)
-            if(votee == Alive.get(i))
+    public int vote(ArrayList<Integer> alive, int votee) {
+        if (votee == -1) {
+            return -1;
+        }
+        if (votee == id) {
+            return -2;
+        }
+        int len = alive.size();
+        for (int i = 0; i < len; i++) {
+            if (votee == alive.get(i)) {
                 return votee;
+            }
+        }
         return -3;
     }
 

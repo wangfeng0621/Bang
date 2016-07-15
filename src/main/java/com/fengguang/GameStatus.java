@@ -5,7 +5,7 @@ package com.fengguang;
  */
 public class GameStatus {
 
-    public enum  status{
-        KillerWin, KillerLose,GameContinue;
+    public enum Status {
+        KillerWin, KillerLose, GameContinue;
     }
 }

@@ -11,12 +11,12 @@ import static org.junit.Assert.assertThat;
 public class GameStatusTest {
 
     @Test
-    public void should_all_gameStatu_when_killer_win(){
+    public void should_all_gameStatu_when_killer_win() {
         GameStatus gameStatus = new GameStatus();
 
-        assertThat(GameStatus.status.KillerWin.toString(), is("KillerWin"));
-        assertThat(GameStatus.status.KillerLose.toString(), is("KillerLose"));
-        assertThat(GameStatus.status.GameContinue.toString(), is("GameContinue"));
+        assertThat(GameStatus.Status.KillerWin.toString(), is("KillerWin"));
+        assertThat(GameStatus.Status.KillerLose.toString(), is("KillerLose"));
+        assertThat(GameStatus.Status.GameContinue.toString(), is("GameContinue"));
     }
 
 }

@@ -11,11 +11,11 @@ import static org.junit.Assert.assertThat;
 public class GamerStateTest {
 
     @Test
-    public void should_all_the_gamer_state(){
+    public void should_all_the_gamer_state() {
         GamerState gamerState = new GamerState();
 
-        assertThat(GamerState.state.Death.toString(), is("Death"));
-        assertThat(GamerState.state.Alive.toString(), is("Alive"));
+        assertThat(GamerState.State.Death.toString(), is("Death"));
+        assertThat(GamerState.State.Alive.toString(), is("Alive"));
 
     }
 
