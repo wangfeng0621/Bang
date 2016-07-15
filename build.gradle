@@ -12,11 +12,3 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.12'
     testCompile 'junit:junit:4.12'
 }
-
-
-test{
-    include '**/BangTest*'
-	include '**/GamerPropertiesTest*'
-	include '**/GamerStateTest*'
-	include '**/RoleTest*'
-}
