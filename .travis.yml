@@ -3,4 +3,6 @@ jdk:
   - oraclejdk8
 script:
   - ./gradlew -v
+  - ./gradlew check
+  - ./gradlew cobertura
   - ./gradlew clean test
