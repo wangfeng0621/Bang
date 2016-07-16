@@ -11,8 +11,10 @@ public class Bang {
     public int killers;
     public int polices;
     public int civilians;
-    public ArrayList<Integer> alive;
+    public ArrayList<Integer> aliveList;
     public GameStatus gameStatus;
+
+    public static final String role[] = {"KILLER", "KILLER", "KILLER", "CIVILIAN", "CIVILIAN", "CIVILIAN", "CIVILIAN", "CIVILIAN", "CIVILIAN", "POLICE", "POLICE", "POLICE"};
 
     public Bang(int number, String[] str) {
         playerNumbers = number;
@@ -20,11 +22,10 @@ public class Bang {
         polices = number / 4;
         civilians = number - killers - polices;
         player = new GamerProperties[number];
-        alive = new ArrayList<>();
-        String role[] = {"KILLER", "KILLER", "KILLER", "CIVILIAN", "CIVILIAN", "CIVILIAN", "CIVILIAN", "CIVILIAN", "CIVILIAN", "POLICE", "POLICE", "POLICE"};
+        aliveList = new ArrayList<>();
         for (int i = 0; i < number; i++) {
             player[i] = new GamerProperties(str[i], i, role[i]);
-            alive.add(i);
+            aliveList.add(i);
         }
         gameStatus = GameStatus.GAME_CONTINUE;
     }
@@ -33,8 +34,8 @@ public class Bang {
     public void outVotee(int[] vote) {
         int votee[] = new int[player.length];
         for (int i = 0; i < playerNumbers; i++) {
-            int id = alive.get(i);
-            votee[player[id].vote(alive, vote[i])]++;
+            int id = aliveList.get(i);
+            votee[player[id].vote(aliveList, vote[i])]++;
         }
 
         int outPlayer = max(votee);
@@ -44,7 +45,6 @@ public class Bang {
         }
 
         outPlayer(outPlayer);
-
     }
 
     private void outPlayer(int outPlayer) {
@@ -57,7 +57,7 @@ public class Bang {
         } else {
             civilians--;
         }
-        alive.remove((Integer) outPlayer);
+        aliveList.remove((Integer) outPlayer);
     }
 
     private int max(int[] votee) {
@@ -80,9 +80,9 @@ public class Bang {
         int votee[] = new int[player.length];
         int index = 0;
         for (int i = 0; i < playerNumbers && index < killed.length; i++) {
-            int id = alive.get(i);
+            int id = aliveList.get(i);
             if (player[id].role == Role.KILLER) {
-                votee[player[id].vote(alive, killed[index])]++;
+                votee[player[id].vote(aliveList, killed[index])]++;
                 index++;
             }
 
@@ -101,7 +101,6 @@ public class Bang {
 
         outPlayer(outPlayer);
     }
-
 
     public boolean checkGameStatus() {
         if (killers == 0) {
